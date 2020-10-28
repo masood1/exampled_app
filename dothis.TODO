@@ -1,0 +1,24 @@
+- create list page in dashboard
+- configure header in main app 
+- configure routing like mol for navigation
+
+
+
+
+- create ui 
+- configure web3 connection 
+- make api calls 
+
+
+What UI
+- dashboard of example
+- page with list of users (in dashboard)
+- component of user list
+- page for adding new user 
+
+
+
+
+Other important things
+- readme to start
+- deploying and sending url 

@@ -1,26 +1,71 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent } from "react";
+import clsx from "clsx";
+import Routes from "./router/index";
+import {
+  Box,
+  Drawer,
+  Container,
+  IconButton,
+  Divider,
+  CssBaseline,
+} from "@material-ui/core";
+import Header from "./components/header/index";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import { useStyles } from "./appStyle";
+import SideDrawer from './screens/sidebar/index';
 
-function App() {
+// ADD ALL GLOBAL CONFIGURATIONS HERE
+
+const App: FunctionComponent = (props: any): JSX.Element => {
+  const {
+    root,
+    content,
+    container,
+    appBarSpacer,
+    drawerPaper,
+    toolbarIcon,
+    drawerPaperClose,
+  } = useStyles();
+
+  const [open, setOpen] = React.useState(true);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <CssBaseline />
+      <Box className={root}>
+        <Header callBack={handleDrawerOpen} title='Dashboard' open={open} />
+   {    
+      // <Drawer
+      //     variant='permanent'
+      //     classes={{
+      //       paper: clsx(drawerPaper, !open && drawerPaperClose),
+      //     }}
+      //     open={open}>
+      //     <Box className={toolbarIcon}>
+      //       <IconButton onClick={handleDrawerClose}>
+      //         <ChevronLeftIcon />
+      //       </IconButton>
+      //     </Box>
+      //     <Divider />
+      //     <SideDrawer/>
+      //   </Drawer>
+      
+      }
+        <main className={content}>
+          <Box className={appBarSpacer} />
+          <Container maxWidth='lg' className={container}>
+            <Routes />
+          </Container>
+        </main>
+      </Box>
+    </Box>
   );
-}
+};
 
 export default App;
