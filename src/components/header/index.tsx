@@ -1,18 +1,21 @@
 import React from "react";
 import clsx from "clsx";
 import {
+  Box,
   AppBar,
   Toolbar,
   IconButton,
   Typography,
-  Badge,
+  Button,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useStyles } from "./style";
+import { LoadWeb3 } from "../../util/LoadWeb3";
 
 const Header = (props: any) => {
-  const { callBack, title , open} = props;
+  const { callBack, title, open } = props;
   const classes = useStyles();
+
   return (
     <AppBar
       position='absolute'
@@ -39,10 +42,20 @@ const Header = (props: any) => {
           {title}
         </Typography>
 
+        <Box ml={10}>
+          <Button
+            onClick={() => ( LoadWeb3())}
+            color={"secondary"}
+            variant='contained'
+          >
+            connect
+          </Button>
+        </Box>
+
         {
           //  <IconButton color='inherit'>
           //       <Badge badgeContent={4} color='secondary'>
-          //         <NotificationsIcon />
+          //       Connect
           //       </Badge>
           //     </IconButton>
         }

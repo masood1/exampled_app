@@ -7,15 +7,20 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import { citizenDetails } from "../../types/components";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100%",
-      // maxWidth: '36ch',
       backgroundColor: theme.palette.background.paper,
+      display: "flex",
+      alignItems: "center",
+      justifycontent: "center",
+      padding: "10px",
+      boxShadow: "3px",
+      margin: "20px",
+      width: "419px",
     },
     inline: {
       display: "inline",
@@ -25,32 +30,40 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const UserList = (props: citizenDetails) => {
   const classes = useStyles();
-  const { id, age = 0, city = "", name = "", someNote = "" } = props;
+  const { id, blockNumber = 0,callBack = ()=>{}, city = "", name = "", someNote = "" } = props;
 
   return (
     <List className={classes.root} key={id}>
-      <ListItem alignItems='flex-start'>
+      <ListItem>
         <ListItemAvatar>
           <Avatar alt={name} src='' />
         </ListItemAvatar>
         <ListItemText
-          primary={name + " - " + city}
+          primary={<h3>Name : {name}</h3>}
           secondary={
             <>
-              {age !== 0 && (
+              {blockNumber !== 0 && (
                 <Typography
                   component='span'
                   variant='body2'
                   className={classes.inline}
                   color='textPrimary'
                 >
-                  Age {age}
+                  <b> Block Number - </b> {blockNumber}
                 </Typography>
               )}
               <Box>{someNote! == "" && "Note: " + someNote}</Box>
             </>
           }
         />
+
+        <Button
+          variant='contained'
+          onClick={() => callBack()}
+          color='primary'
+        >
+          View Note
+        </Button>
       </ListItem>
     </List>
   );

@@ -10,14 +10,14 @@ import { SIDEBAR_TITLES } from "../../util/constants";
 export const pages = [
   {
     title: SIDEBAR_TITLES.DASHBOARD,
-    href:  RoutePath.DASHBOARD,
+    href:  RoutePath.DASHBOARD_LANDING,
     icon: <Home />,
     mt: 2
   },
 
   {
     title: SIDEBAR_TITLES.CREATEUSER,
-    href: RoutePath.ADD_NEW_USER,
+    href: RoutePath.DASHBOARD_CRAETE_USER,
     icon: <PlusOne />,
     mt: 2
   },

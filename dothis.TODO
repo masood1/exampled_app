@@ -3,8 +3,6 @@
 - configure routing like mol for navigation
 
 
-
-
 - create ui 
 - configure web3 connection 
 - make api calls 
@@ -15,8 +13,6 @@ What UI
 - page with list of users (in dashboard)
 - component of user list
 - page for adding new user 
-
-
 
 
 Other important things

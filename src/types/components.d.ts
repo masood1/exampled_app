@@ -27,8 +27,9 @@ export interface CopyRightProps extends typographyTypes {
 
   export type citizenDetails = {
     id:any,
-    age:number, 
+    blockNumber:number, 
     city:string,
     name:string,
-    someNote:string
+    someNote:string,
+    callBack?:any,
   }

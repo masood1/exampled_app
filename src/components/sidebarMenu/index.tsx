@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { SidebarMenuProps } from '../../types/components';
 import { COPYGRAY } from '../../theme/colors';
+import { useHistory } from "react-router-dom";
  
 const style = {
   header: 0, //minHeight
@@ -89,11 +90,21 @@ const useStyles = makeStyles((theme: Theme) => ({
     }
   },
   drawerPaper: {
-    top: drawerTop,
+    position: 'relative',
+    whiteSpace: 'nowrap',
     width: drawerWidth,
-    height: drawerHeight,
-    overflow: "auto",
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
+
+  // drawerPaper: {
+  //   top: drawerTop,
+  //   width: drawerWidth,
+  //   height: drawerHeight,
+  //   overflow: "auto",
+  // },
 }));
 
 
@@ -118,11 +129,11 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const SidebarMenu = (props: SidebarMenuProps) => {
   const { pages, routerLink, ...rest } = props;
-
+  const history = useHistory();
   const { root, item, active, icon, drawer, drawerPaper } = useStyles();
 
   return (
-    <Drawer open={true} variant="permanent" className={drawer} classes={{
+    <Drawer open={true} variant="permanent" className={drawer}  classes={{
       paper: drawerPaper
     }} anchor="left" {...rest}>
     <List className={root}>
@@ -130,10 +141,13 @@ const SidebarMenu = (props: SidebarMenuProps) => {
         <Box mt={page.mt ? page.mt : 0} mb={page.mb ? page.mb : 0} key={i}>
           <ListItem className={item} disableGutters key={page.title}>
             <Button
-              activeClassName={active}
-              component={routerLink}
-              to={page.href}
-              onClick={(event:any) => !page?.enableClick ? event.preventDefault(): ''}
+              // activeClassName={active}
+              // component={routerLink}
+              // to={page.href}
+              // onClick={(event:any) => !page?.enableClick ? event.preventDefault(): ''}
+              onClick={()=>{
+                history.push(page.href)
+              }}
             >
               <div className={icon}>{page.icon}</div>
               <h5>{page.title}</h5>
